@@ -7,6 +7,20 @@ if [ ! -f /etc/nginx/ssl/default.crt ]; then
     chmod 644 /etc/nginx/ssl/default.key
 fi
 
+if [ ! -f /etc/nginx/ssl/nuwwe.pp.crt ]; then
+    openssl genrsa -out "/etc/nginx/ssl/nuwwe.pp.key" 2048
+    openssl req -new -key "/etc/nginx/ssl/nuwwe.pp.key" -out "/etc/nginx/ssl/nuwwe.pp.csr" -subj "/CN=nuwwe.pp/O=nuwwe.pp/C=UK"
+    openssl x509 -req -days 365 -in "/etc/nginx/ssl/nuwwe.pp.csr" -signkey "/etc/nginx/ssl/nuwwe.pp.key" -out "/etc/nginx/ssl/nuwwe.pp.crt"
+    chmod 644 /etc/nginx/ssl/nuwwe.pp.key
+fi
+
+if [ ! -f /etc/nginx/ssl/apipdf-nuwwe.pp.crt ]; then
+    openssl genrsa -out "/etc/nginx/ssl/apipdf-nuwwe.pp.key" 2048
+    openssl req -new -key "/etc/nginx/ssl/apipdf-nuwwe.pp.key" -out "/etc/nginx/ssl/apipdf-nuwwe.pp.csr" -subj "/CN=apipdf-nuwwe.pp/O=apipdf-nuwwe.pp/C=UK"
+    openssl x509 -req -days 365 -in "/etc/nginx/ssl/apipdf-nuwwe.pp.csr" -signkey "/etc/nginx/ssl/apipdf-nuwwe.pp.key" -out "/etc/nginx/ssl/apipdf-nuwwe.pp.crt"
+    chmod 644 /etc/nginx/ssl/apipdf-nuwwe.pp.key
+fi
+
 # Start crond in background
 crond -l 2 -b
 

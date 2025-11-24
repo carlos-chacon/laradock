@@ -57,7 +57,7 @@ services:
 
 ### Workspace Utilities ##################################
     workspace:
-      restart: always
+      restart: "no"
       build:
         context: ./workspace
         args:
@@ -218,7 +218,7 @@ services:
 
 ### PHP-FPM ##############################################
     php-fpm:
-      restart: always
+      restart: "no"
       build:
         context: ./php-fpm
         args:
@@ -339,7 +339,7 @@ services:
 
 ### PHP Worker ############################################
     php-worker:
-      restart: always
+      restart: "no"
       build:
         context: ./php-worker
         args:
@@ -400,7 +400,7 @@ services:
         - backend
 ### Laravel Horizon ############################################
     laravel-horizon:
-      restart: always
+      restart: "no"
       build:
         context: ./laravel-horizon
         args:
@@ -455,7 +455,7 @@ services:
 
 ### NGINX Server #########################################
     nginx:
-      restart: always
+      restart: "no"
       build:
         context: ./nginx
         args:
@@ -484,7 +484,7 @@ services:
 
 ### OpenResty Server #########################################
     openresty:
-      restart: always
+      restart: "no"
       build:
         context: ./openresty
         args:
@@ -522,7 +522,7 @@ services:
 
 ### Apache Server ########################################
     apache2:
-      restart: always
+      restart: "no"
       build:
         context: ./apache2
         args:
@@ -548,7 +548,7 @@ services:
 
 ### HHVM #################################################
     hhvm:
-      restart: always
+      restart: "no"
       build: ./hhvm
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
@@ -562,7 +562,7 @@ services:
 
 ### Minio ################################################
     minio:
-      restart: always
+      restart: "no"
       build: ./minio
       volumes:
         - ${DATA_PATH_HOST}/minio/data:/export
@@ -579,7 +579,7 @@ services:
 
 ### MySQL ################################################
     mysql:
-      restart: always
+      restart: "no"
       build:
         context: ./mysql
         args:
@@ -600,7 +600,7 @@ services:
 
 ### Percona ################################################
     percona:
-      restart: always
+      restart: "no"
       build:
         context: ./percona
       environment:
@@ -618,7 +618,7 @@ services:
 
 ### MSSQL ################################################
     mssql:
-      restart: always
+      restart: "no"
       build:
         context: ./mssql
       environment:
@@ -635,7 +635,7 @@ services:
 
 ### MariaDB ##############################################
     mariadb:
-      restart: always
+      restart: "no"
       build:
         context: ./mariadb
         args:
@@ -659,7 +659,7 @@ services:
 
 ### PostgreSQL ###########################################
     postgres:
-      restart: always
+      restart: "no"
       build:
         context: ./postgres
         args:
@@ -698,7 +698,7 @@ services:
 ### pgbackups PostgreSQL ###########################################
     pgbackups:
       image: prodrigestivill/postgres-backup-local
-      restart: always
+      restart: "no"
       volumes:
         - ../backup:/backups
       links:
@@ -714,7 +714,7 @@ services:
 
 ### PostgreSQL PostGis ###################################
     postgres-postgis:
-      restart: always
+      restart: "no"
       build:
         context: ./postgres-postgis
         args:
@@ -733,7 +733,7 @@ services:
 
 ### Neo4j ################################################
     neo4j:
-      restart: always
+      restart: "no"
       ports:
           - '7401:7474'
           - '7402:7687'
@@ -757,7 +757,7 @@ services:
 
 ### MongoDB ##############################################
     mongo:
-      restart: always
+      restart: "no"
       build: ./mongo
       ports:
         - "${MONGODB_PORT}:27017"
@@ -772,7 +772,7 @@ services:
 
 ### RethinkDB ##############################################
     rethinkdb:
-      restart: always
+      restart: "no"
       build: ./rethinkdb
       ports:
         - "${RETHINKDB_PORT}:8080"
@@ -814,7 +814,7 @@ services:
 
   ### Redis ################################################
     redis:
-      restart: always
+      restart: "no"
       build: ./redis
       volumes:
         - ${DATA_PATH_HOST}/redis:/data
@@ -826,7 +826,7 @@ services:
 
 ### Redis Cluster ##########################################
     redis-cluster:
-      restart: always
+      restart: "no"
       build: ./redis-cluster
       ports:
         - "${REDIS_CLUSTER_PORT_RANGE}:7000-7005"
@@ -834,7 +834,7 @@ services:
         - backend
 ### SSDB ################################################
     ssdb:
-      restart: always
+      restart: "no"
       build: ./ssdb
       volumes:
         - ${DATA_PATH_HOST}/ssdb:/data
@@ -845,7 +845,7 @@ services:
 
 ### ZooKeeper #########################################
     zookeeper:
-      restart: always
+      restart: "no"
       build: ./zookeeper
       volumes:
         - ${DATA_PATH_HOST}/zookeeper/data:/data
@@ -857,7 +857,7 @@ services:
 
 ### Aerospike ##########################################
     aerospike:
-      restart: always
+      restart: "no"
       build: ./aerospike
       volumes:
         - workspace
@@ -876,7 +876,7 @@ services:
 
 ### Memcached ############################################
     memcached:
-      restart: always
+      restart: "no"
       build: ./memcached
       volumes:
         - ${DATA_PATH_HOST}/memcached:/var/lib/memcached
@@ -889,7 +889,7 @@ services:
 
 ### Beanstalkd ###########################################
     beanstalkd:
-      restart: always
+      restart: "no"
       build: ./beanstalkd
       ports:
         - "${BEANSTALKD_HOST_PORT}:11300"
@@ -901,7 +901,7 @@ services:
 
 ### SQS #############################################
     sqs:
-      restart: always
+      restart: "no"
       build: ./sqs
       ports:
         - "${SQS_NODE_HOST_PORT}:9324"
@@ -916,7 +916,7 @@ services:
 
 ### RabbitMQ #############################################
     rabbitmq:
-      restart: always
+      restart: "no"
       build: ./rabbitmq
       ports:
         - "${RABBITMQ_NODE_HOST_PORT}:5672"
@@ -936,7 +936,7 @@ services:
 
 ### Mercure #############################################
     mercure:
-      restart: always
+      restart: "no"
       build: ./mercure
       ports:
         - "${MERCURE_NODE_HOST_HTTP_PORT}:80"
@@ -955,7 +955,7 @@ services:
 
 ### Cassandra ############################################
     cassandra:
-      restart: always
+      restart: "no"
       build: ./cassandra
       ports:
         - "${CASSANDRA_TRANSPORT_PORT_NUMBER}:7000"
@@ -988,7 +988,7 @@ services:
 
 ### Gearman ############################################
     gearman:
-      restart: always
+      restart: "no"
       build: ./gearman
       ports:
         - "${GEARMAN_PORT}:4730"
@@ -1022,7 +1022,7 @@ services:
 
 ### Beanstalkd Console ###################################
     beanstalkd-console:
-      restart: always
+      restart: "no"
       build: ./beanstalkd-console
       ports:
         - "${BEANSTALKD_CONSOLE_HOST_PORT}:2080"
@@ -1033,7 +1033,7 @@ services:
 
 ### Caddy Server #########################################
     caddy:
-      restart: always
+      restart: "no"
       build: ./caddy
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
@@ -1051,7 +1051,7 @@ services:
 
 ### phpMyAdmin ###########################################
     phpmyadmin:
-      restart: always
+      restart: "no"
       build: ./phpmyadmin
       environment:
         - PMA_ARBITRARY=1
@@ -1071,7 +1071,7 @@ services:
 
 ### Adminer ###########################################
     adminer:
-      restart: always
+      restart: "no"
       build:
         context: ./adminer
         args:
@@ -1090,7 +1090,7 @@ services:
 
 ### pgAdmin ##############################################
     pgadmin:
-      restart: always
+      restart: "no"
       image: dpage/pgadmin4:latest
       environment:
         - "PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}"
@@ -1120,7 +1120,7 @@ services:
 
 ### ElasticSearch ########################################
     elasticsearch:
-      restart: always
+      restart: "no"
       build:
         context: ./elasticsearch
         args:
@@ -1154,7 +1154,7 @@ services:
 
 ### Logstash ##############################################
     logstash:
-      restart: always
+      restart: "no"
       build:
         context: ./logstash
         args:
@@ -1176,7 +1176,7 @@ services:
 
 ### Kibana ##############################################
     kibana:
-      restart: always
+      restart: "no"
       build:
         context: ./kibana
         args:
@@ -1191,7 +1191,7 @@ services:
 
 ### Dejavu ##############################################
     dejavu:
-      restart: always
+      restart: "no"
       build:
         context: ./dejavu
       ports:
@@ -1217,7 +1217,7 @@ services:
 
 ### MailCatcher ################################################
     mailcatcher:
-      restart: always
+      restart: "no"
       build: ./mailcatcher
       ports:
         - "1025:1025"
@@ -1228,7 +1228,7 @@ services:
 
 ### Mailhog ################################################
     mailhog:
-      restart: always
+      restart: "no"
       build: ./mailhog
       ports:
         - "1025:1025"
@@ -1239,7 +1239,7 @@ services:
 
 ### MailDev ##############################################
     maildev:
-      restart: always
+      restart: "no"
       build: ./maildev
       ports:
         - "${MAILDEV_HTTP_PORT}:80"
@@ -1250,7 +1250,7 @@ services:
 
 ### Mailpit ##############################################
     mailpit:
-      restart: always
+      restart: "no"
       build: ./mailpit
       ports:
         - "${MAILPIT_HTTP_PORT}:8025"
@@ -1261,7 +1261,7 @@ services:
 
 ### Selenium ###############################################
     selenium:
-      restart: always
+      restart: "no"
       build: ./selenium
       ports:
         - "${SELENIUM_PORT}:4444"
@@ -1272,7 +1272,7 @@ services:
 
 ### Varnish ##########################################
     proxy:
-      restart: always
+      restart: "no"
       container_name: proxy
       build: ./varnish
       expose:
@@ -1314,7 +1314,7 @@ services:
 
 ### HAProxy ####################################
     haproxy:
-      restart: always
+      restart: "no"
       build: ./haproxy
       ports:
         - "${HAPROXY_HOST_HTTP_PORT}:8085"
@@ -1326,7 +1326,7 @@ services:
 
 ### Jenkins ###################################################
     jenkins:
-      restart: always
+      restart: "no"
       build: ./jenkins
       environment:
         JAVA_OPTS: "-Djava.awt.headless=true"
@@ -1343,7 +1343,7 @@ services:
 
 ### Grafana ################################################
     grafana:
-      restart: always
+      restart: "no"
       build:
         context: ./grafana
       volumes:
@@ -1355,7 +1355,7 @@ services:
 
 ### Graylog #######################################
     graylog:
-      restart: always
+      restart: "no"
       build: ./graylog
       environment:
         - GRAYLOG_PASSWORD_SECRET=${GRAYLOG_PASSWORD}
@@ -1386,7 +1386,7 @@ services:
 
 ### Laravel Echo Server #######################################
     laravel-echo-server:
-      restart: always
+      restart: "no"
       build:
         context: ./laravel-echo-server
         args:
@@ -1403,7 +1403,7 @@ services:
 
 ### Solr ################################################
     solr:
-      restart: always
+      restart: "no"
       build:
         context: ./solr
         args:
@@ -1419,7 +1419,7 @@ services:
 
 ### Thumbor #########################################
     thumbor:
-      restart: always
+      restart: "no"
       build: ./thumbor
       volumes:
         - ${DATA_PATH_HOST}/thumbor/data:/data
@@ -1536,7 +1536,7 @@ services:
 
 ### AWS EB-CLI ################################################
     aws:
-      restart: always
+      restart: "no"
       build:
         context: ./aws-eb-cli
       volumes:
@@ -1547,7 +1547,7 @@ services:
 
 ### Portainer ################################################
     portainer:
-      restart: always
+      restart: "no"
       build:
         context: ./portainer
       volumes:
@@ -1605,11 +1605,11 @@ services:
       volumes:
         - ${DATA_PATH_HOST}/gitlab/runner:/etc/gitlab-runner
         - /var/run/docker.sock:/var/run/docker.sock:rw
-      restart: always
+      restart: "no"
 
 ### JupyterHub #########################################
     jupyterhub:
-      restart: always
+      restart: "no"
       build:
         context: ./jupyterhub
       depends_on:
@@ -1645,7 +1645,7 @@ services:
 
 ### IPython #########################################
     ipython-controller:
-      restart: always
+      restart: "no"
       build:
         context: ./ipython
         dockerfile: Dockerfile.controller
@@ -1666,7 +1666,7 @@ services:
 
 ### Docker-in-Docker ################################################
     docker-in-docker:
-      restart: always
+      restart: "no"
       image: docker:20.10-dind
       environment:
         DOCKER_TLS_SAN: DNS:docker-in-docker
@@ -1681,7 +1681,7 @@ services:
 
 ### NetData ################################################
     netdata:
-      restart: always
+      restart: "no"
       image: netdata/netdata:latest
       cap_add:
         - SYS_PTRACE
@@ -1696,7 +1696,7 @@ services:
 
 ### REDISWEBUI ################################################
     redis-webui:
-      restart: always
+      restart: "no"
       build:
         context: ./redis-webui
       environment:
@@ -1714,7 +1714,7 @@ services:
 
 ### MongoWebUI ################################################
     mongo-webui:
-      restart: always
+      restart: "no"
       build:
         context: ./mongo-webui
       environment:
@@ -1732,7 +1732,7 @@ services:
 
 ### Metabase #################################################
     metabase:
-      restart: always
+      restart: "no"
       image: metabase/metabase:latest
       environment:
         - MB_DB_FILE=/metabase-data/${METABASE_DB_FILE}
@@ -2107,7 +2107,7 @@ services:
     confluence:
       container_name: Confluence
       image: atlassian/confluence-server:${CONFLUENCE_VERSION}
-      restart: always
+      restart: "no"
       ports:
         - "${CONFLUENCE_HOST_HTTP_PORT}:8090"
       networks:
@@ -2148,7 +2148,7 @@ services:
       volumes:
         - ${DATA_PATH_HOST}/tomcat/webapps:/usr/local/tomcat/webapps
         - ${DATA_PATH_HOST}/tomcat/logs:/usr/local/tomcat/logs
-      # restart: always
+      # restart: "no"
 
 ### react #####################################################
     react:
@@ -2224,7 +2224,7 @@ services:
       networks:
         - frontend
         - backend
-      restart: always
+      restart: "no"
   
   ### keycloak ##################################################
     keycloak:
