@@ -7,6 +7,20 @@ if [ ! -f /etc/nginx/ssl/default.crt ]; then
     chmod 644 /etc/nginx/ssl/default.key
 fi
 
+if [ ! -f /etc/nginx/ssl/api.efranco.pp.crt ]; then
+    openssl genrsa -out "/etc/nginx/ssl/api.efranco.pp.key" 2048
+    openssl req -new -key "/etc/nginx/ssl/api.efranco.pp.key" -out "/etc/nginx/ssl/api.efranco.pp.csr" -config "/etc/nginx/ssl/api.efranco.pp.cnf"
+    openssl x509 -req -days 365 -in "/etc/nginx/ssl/api.efranco.pp.csr" -signkey "/etc/nginx/ssl/api.efranco.pp.key" -out "/etc/nginx/ssl/api.efranco.pp.crt" -extensions req_ext -extfile "/etc/nginx/ssl/api.efranco.pp.cnf"
+    chmod 644 /etc/nginx/ssl/api.efranco.pp.key
+fi
+
+if [ ! -f /etc/nginx/ssl/laravel-reverb.pp.crt ]; then
+    openssl genrsa -out "/etc/nginx/ssl/laravel-reverb.pp.key" 2048
+    openssl req -new -key "/etc/nginx/ssl/laravel-reverb.pp.key" -out "/etc/nginx/ssl/laravel-reverb.pp.csr" -config "/etc/nginx/ssl/laravel-reverb.pp.cnf"
+    openssl x509 -req -days 365 -in "/etc/nginx/ssl/laravel-reverb.pp.csr" -signkey "/etc/nginx/ssl/laravel-reverb.pp.key" -out "/etc/nginx/ssl/laravel-reverb.pp.crt" -extensions req_ext -extfile "/etc/nginx/ssl/laravel-reverb.pp.cnf"
+    chmod 644 /etc/nginx/ssl/laravel-reverb.pp.key
+fi
+
 # Start crond in background
 crond -l 2 -b
 
