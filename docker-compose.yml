@@ -477,6 +477,7 @@ services:
           - no_proxy
       volumes:
         - ./php-fpm/php${PHP_VERSION}.ini:/usr/local/etc/php/php.ini
+        - ./php-fpm/laravel.ini:/usr/local/etc/php/conf.d/zz-laravel.ini
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
         - docker-in-docker:/certs/client
       expose:
@@ -597,6 +598,7 @@ services:
           - no_proxy
       volumes:
         - ./php-fpm/php${PHP_VERSION}.ini:/usr/local/etc/php/php.ini
+        - ./php-fpm/laravel.ini:/usr/local/etc/php/conf.d/zz-laravel.ini
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
         - docker-in-docker:/certs/client
       expose:
