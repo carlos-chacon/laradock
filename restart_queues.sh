@@ -17,5 +17,6 @@ echo "Iniciando workers nuevamente..."
 # Lanzar los workers en segundo plano
 php artisan queue:work database --queue=default --timeout=0 --daemon >> storage/logs/queue-default.log 2>&1 &
 php artisan queue:work database --queue=long-running-processes --timeout=0 --daemon >> storage/logs/queue-long.log 2>&1 &
+php artisan queue:work database --queue=form_status_changes --timeout=0 --daemon >> storage/logs/queue-form_status_changes.log 2>&1 &
 
 echo "Workers reiniciados correctamente."
