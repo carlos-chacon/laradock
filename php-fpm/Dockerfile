@@ -658,8 +658,12 @@ RUN if [ ${INSTALL_OCI8} = true ]; then \
         && rm -rf /opt/oracle/*.zip \
     # Install PHP extensions deps
     && apt-get install --no-install-recommends -yqq \
+      $(apt-cache show libaio1t64 >/dev/null 2>&1 && echo libaio1t64 || echo libaio1) \
       libaio-dev \
-      freetds-dev && \
+      freetds-dev \
+    && if [ ! -e /usr/lib/x86_64-linux-gnu/libaio.so.1 ] && [ -e /usr/lib/x86_64-linux-gnu/libaio.so.1t64 ]; then \
+          ln -s /usr/lib/x86_64-linux-gnu/libaio.so.1t64 /usr/lib/x86_64-linux-gnu/libaio.so.1; \
+       fi && \
     # Install PHP extensions
     if [ $(php -r "echo PHP_MAJOR_VERSION;") = "5" ]; then \
       echo 'instantclient,/opt/oracle/instantclient_${ORACLE_INSTANT_CLIENT_VERSION}/' | pecl install oci8-2.0.12; \
