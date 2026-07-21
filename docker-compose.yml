@@ -947,6 +947,7 @@ services:
 ### PostgreSQL ###########################################
     postgres:
       restart: no
+      shm_size: '512mb'
       build:
         context: ./postgres
         args:
