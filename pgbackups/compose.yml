@@ -2,7 +2,7 @@ services:
 
     pgbackups:
       image: prodrigestivill/postgres-backup-local
-      restart: always
+      restart: "no"
       volumes:
         - ../backup:/backups
       links:

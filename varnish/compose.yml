@@ -1,7 +1,7 @@
 services:
 
     proxy:
-      restart: always
+      restart: "no"
       container_name: proxy
       build: ./varnish
       expose:

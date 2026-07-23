@@ -1,7 +1,7 @@
 services:
 
     ssdb:
-      restart: always
+      restart: "no"
       build: ./ssdb
       volumes:
         - ${DATA_PATH_HOST}/ssdb:/data

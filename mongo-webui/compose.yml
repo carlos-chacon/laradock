@@ -1,7 +1,7 @@
 services:
 
     mongo-webui:
-      restart: always
+      restart: "no"
       build:
         context: ./mongo-webui
       environment:

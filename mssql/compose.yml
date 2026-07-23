@@ -1,7 +1,7 @@
 services:
 
     mssql:
-      restart: always
+      restart: "no"
       build:
         context: ./mssql
       environment:

@@ -36,7 +36,7 @@ docker compose up -d docker-in-docker
 </TabItem>
 </Tabs>
 
-The container runs `privileged: true` (required for dind to manage its own cgroups and networking) and stays up via `restart: always`.
+The container runs `privileged: true` (required for dind to manage its own cgroups and networking) and stays up via `restart: "no"`.
 
 ## Stop Docker in Docker
 

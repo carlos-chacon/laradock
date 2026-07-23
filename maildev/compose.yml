@@ -1,7 +1,7 @@
 services:
 
     maildev:
-      restart: always
+      restart: "no"
       build: ./maildev
       ports:
         - "${MAILDEV_HTTP_PORT}:1080"

@@ -1,7 +1,7 @@
 services:
 
     rabbitmq:
-      restart: always
+      restart: "no"
       build: ./rabbitmq
       ports:
         - "${RABBITMQ_NODE_HOST_PORT}:5672"

@@ -1,7 +1,7 @@
 services:
 
     mailpit:
-      restart: always
+      restart: "no"
       build: ./mailpit
       ports:
         - "${MAILPIT_HTTP_PORT}:8025"

@@ -1,7 +1,7 @@
 services:
 
     neo4j:
-      restart: always
+      restart: "no"
       ports:
           - '7401:7474'
           - '7402:7687'

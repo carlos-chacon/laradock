@@ -1,7 +1,7 @@
 services:
 
     gearman:
-      restart: always
+      restart: "no"
       build: ./gearman
       ports:
         - "${GEARMAN_PORT}:4730"

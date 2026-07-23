@@ -1,7 +1,7 @@
 services:
 
     grafana:
-      restart: always
+      restart: "no"
       build:
         context: ./grafana
       volumes:

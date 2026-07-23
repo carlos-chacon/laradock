@@ -1,7 +1,7 @@
 services:
 
     beanstalkd-console:
-      restart: always
+      restart: "no"
       build: ./beanstalkd-console
       ports:
         - "${BEANSTALKD_CONSOLE_HOST_PORT}:2080"

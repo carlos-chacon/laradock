@@ -1,7 +1,7 @@
 services:
 
     mailcatcher:
-      restart: always
+      restart: "no"
       build: ./mailcatcher
       ports:
         - "1025:1025"

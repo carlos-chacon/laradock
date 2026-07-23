@@ -1,7 +1,7 @@
 services:
 
     zookeeper:
-      restart: always
+      restart: "no"
       build: ./zookeeper
       volumes:
         - ${DATA_PATH_HOST}/zookeeper/data:/data
