@@ -1,7 +1,7 @@
 services:
 
     postgres:
-      restart: always
+      restart: "no"
       build:
         context: ./postgres
         args:
