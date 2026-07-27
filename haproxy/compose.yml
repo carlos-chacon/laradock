@@ -1,7 +1,7 @@
 services:
 
     haproxy:
-      restart: always
+      restart: "no"
       build: ./haproxy
       ports:
         - "${HAPROXY_HOST_HTTP_PORT}:8085"

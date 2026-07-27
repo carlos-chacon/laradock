@@ -1,7 +1,7 @@
 services:
 
     apache2:
-      restart: always
+      restart: "no"
       build:
         context: ./apache2
         args:

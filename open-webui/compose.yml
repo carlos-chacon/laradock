@@ -1,7 +1,7 @@
 services:
 
     open-webui:
-      restart: always
+      restart: "no"
       image: ghcr.io/open-webui/open-webui:${OPEN_WEBUI_VERSION}
       environment:
         - OLLAMA_BASE_URL=http://${OPEN_WEBUI_LLM_ENGINE}:${OPEN_WEBUI_LLM_PORT}

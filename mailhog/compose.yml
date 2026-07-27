@@ -1,7 +1,7 @@
 services:
 
     mailhog:
-      restart: always
+      restart: "no"
       build: ./mailhog
       ports:
         - "1025:1025"

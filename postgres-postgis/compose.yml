@@ -1,7 +1,7 @@
 services:
 
     postgres-postgis:
-      restart: always
+      restart: "no"
       build:
         context: ./postgres-postgis
         args:

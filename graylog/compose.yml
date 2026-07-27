@@ -1,7 +1,7 @@
 services:
 
     graylog:
-      restart: always
+      restart: "no"
       build: ./graylog
       environment:
         - GRAYLOG_PASSWORD_SECRET=${GRAYLOG_PASSWORD}

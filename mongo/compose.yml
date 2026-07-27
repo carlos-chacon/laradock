@@ -1,7 +1,7 @@
 services:
 
     mongo:
-      restart: always
+      restart: "no"
       build:
         context: ./mongo
         args:

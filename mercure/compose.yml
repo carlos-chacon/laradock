@@ -1,7 +1,7 @@
 services:
 
     mercure:
-      restart: always
+      restart: "no"
       build: ./mercure
       ports:
         - "${MERCURE_NODE_HOST_HTTP_PORT}:80"

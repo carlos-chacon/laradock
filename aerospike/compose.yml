@@ -1,7 +1,7 @@
 services:
 
     aerospike:
-      restart: always
+      restart: "no"
       build: ./aerospike
       volumes:
         - workspace

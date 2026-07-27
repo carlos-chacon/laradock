@@ -1,7 +1,7 @@
 services:
 
     thumbor:
-      restart: always
+      restart: "no"
       build: ./thumbor
       volumes:
         - ${DATA_PATH_HOST}/thumbor/data:/data

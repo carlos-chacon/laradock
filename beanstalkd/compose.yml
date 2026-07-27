@@ -1,7 +1,7 @@
 services:
 
     beanstalkd:
-      restart: always
+      restart: "no"
       build: ./beanstalkd
       ports:
         - "${BEANSTALKD_HOST_PORT}:11300"

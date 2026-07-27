@@ -14,7 +14,7 @@ name: ${APP_NAME:-laradock-app}
 services:
   app:                                   # self-contained web image (built by ./laradock ship)
     image: ${APP_IMAGE:-laradock-app:latest}
-    restart: always
+    restart: "no"
     env_file: .env
     ports:
       - "${HTTP_PORT:-80}:${PORT:-8080}"
@@ -28,7 +28,7 @@ services:
   # --- optional: queue/messenger worker (Laravel/Symfony). Off unless --profile worker ---
   worker:
     image: ${APP_IMAGE:-laradock-app:latest}
-    restart: always
+    restart: "no"
     env_file: .env
     entrypoint: ["/bin/sh", "-c"]
     command: ["${WORKER_COMMAND:-php artisan queue:work --tries=3 --timeout=90}"]
@@ -40,7 +40,7 @@ services:
   # ponytail: naive 60s sleep loop. Precise cron? use the k8s CronJob or a host crontab.
   scheduler:
     image: ${APP_IMAGE:-laradock-app:latest}
-    restart: always
+    restart: "no"
     env_file: .env
     entrypoint: ["/bin/sh", "-c"]
     command: ["while true; do ${SCHEDULER_COMMAND:-php artisan schedule:run}; sleep 60; done"]

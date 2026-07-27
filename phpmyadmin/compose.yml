@@ -1,7 +1,7 @@
 services:
 
     phpmyadmin:
-      restart: always
+      restart: "no"
       build: ./phpmyadmin
       environment:
         - PMA_ARBITRARY=1

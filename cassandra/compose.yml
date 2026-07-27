@@ -1,7 +1,7 @@
 services:
 
     cassandra:
-      restart: always
+      restart: "no"
       build: ./cassandra
       ports:
         - "${CASSANDRA_TRANSPORT_PORT_NUMBER}:7000"

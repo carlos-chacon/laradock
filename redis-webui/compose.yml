@@ -1,7 +1,7 @@
 services:
 
     redis-webui:
-      restart: always
+      restart: "no"
       build:
         context: ./redis-webui
       environment:
