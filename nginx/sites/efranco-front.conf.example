@@ -1,0 +1,38 @@
+server {
+
+    listen 80;
+    listen [::]:80;
+
+    # For https
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    ssl_certificate /etc/nginx/ssl/front-efranco.pp.crt;
+    ssl_certificate_key /etc/nginx/ssl/front-efranco.pp.key;
+
+    server_name front-efranco.pp;
+    root /var/www/front-zona-franca/build;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Cache static assets
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+
+    location /.well-known/acme-challenge/ {
+        root /var/www/letsencrypt/;
+        log_not_found off;
+    }
+
+    error_log /var/log/nginx/efranco-front_error.log;
+    access_log /var/log/nginx/efranco-front_access.log;
+}
+
